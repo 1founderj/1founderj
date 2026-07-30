@@ -759,12 +759,6 @@
             position: relative;
             overflow: hidden;
         }
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
         .project-image .project-gradient {
             position: absolute;
             inset: 0;
@@ -1214,9 +1208,304 @@
             white-space: nowrap;
             border: 0;
         }
+
+        /* ================================================================
+           WOW LAYER — preloader, grain, cursor, partículas, tilt, magnetismo
+           No se tocan colores, tipografías ni contenido: solo movimiento.
+        ================================================================ */
+
+        /* ----- Preloader ----- */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--bg-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), visibility 0.7s;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .preloader-mark {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+        .preloader-mark .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 14px var(--accent-glow);
+        }
+        .preloader-bar {
+            position: absolute;
+            bottom: calc(50% - 60px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 2px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .preloader-bar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: preloader-sweep 1.1s ease-in-out infinite;
+        }
+        @keyframes preloader-sweep {
+            0% { transform: translateX(-120%); }
+            100% { transform: translateX(320%); }
+        }
+
+        /* ----- Scroll progress ----- */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--blue-accent));
+            box-shadow: 0 0 10px var(--accent-glow);
+            z-index: 1002;
+            transition: width 0.08s linear;
+        }
+
+        /* ----- Grain overlay ----- */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.035;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ----- Cursor ring (desktop only) ----- */
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1001;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s var(--transition-bounce), height 0.25s var(--transition-bounce), border-color 0.25s ease, opacity 0.3s ease, background 0.25s ease;
+            opacity: 0;
+            display: none;
+        }
+        .cursor-ring.active { opacity: 0.9; }
+        .cursor-ring.hovering {
+            width: 56px;
+            height: 56px;
+            background: var(--accent-subtle);
+            border-color: var(--accent);
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .cursor-ring { display: block; }
+        }
+
+        /* ----- Particle canvas (hero) ----- */
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* ----- Magnetic buttons ----- */
+        .btn {
+            will-change: transform;
+        }
+        .btn-magnetic-label {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ----- Button ripple ----- */
+        .btn .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            background: rgba(255, 255, 255, 0.35);
+            pointer-events: none;
+            animation: ripple-out 0.6s ease-out forwards;
+        }
+        .btn-secondary .ripple, .btn-ghost .ripple {
+            background: rgba(0, 255, 136, 0.25);
+        }
+        @keyframes ripple-out {
+            to {
+                transform: scale(2.6);
+                opacity: 0;
+            }
+        }
+
+        /* ----- 3D tilt targets ----- */
+        .card, .project-card, .product-card, .philosophy-card, .service-block, .hero-illustration {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* ----- Conic gradient glow border on cards ----- */
+        .card, .project-card {
+            position: relative;
+        }
+        .card::after, .project-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: conic-gradient(from var(--angle, 0deg), transparent 0%, var(--accent) 8%, transparent 18%, transparent 82%, var(--blue-accent) 92%, transparent 100%);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            z-index: 2;
+            pointer-events: none;
+            animation: spin-angle 3.5s linear infinite;
+            animation-play-state: paused;
+        }
+        .card:hover::after, .project-card:hover::after {
+            opacity: 1;
+            animation-play-state: running;
+        }
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @keyframes spin-angle {
+            to { --angle: 360deg; }
+        }
+
+        /* ----- Shine sweep on project/product cards ----- */
+        .project-image {
+            position: relative;
+        }
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+            transform: skewX(-20deg);
+            transition: left 0.75s ease;
+            pointer-events: none;
+        }
+        .project-card:hover .project-image::after {
+            left: 130%;
+        }
+
+        /* ----- Hero title reveal ----- */
+        .hero-title .word {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        .hero-title .word span {
+            display: inline-block;
+            transform: translateY(115%) rotate(4deg);
+            opacity: 0;
+            animation: word-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes word-in {
+            to {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+        }
+        .hero-title .highlight {
+            background-size: 200% auto;
+            animation: gradient-shift 4s ease-in-out infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        /* ----- Timeline scroll reveal ----- */
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-16px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .timeline-item.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .timeline::before {
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 1.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .timeline.in-view::before {
+            transform: scaleY(1);
+        }
+
+        /* ----- Stat number glow pulse when done counting ----- */
+        .stat-number.counted {
+            animation: stat-pop 0.5s ease-out;
+        }
+        @keyframes stat-pop {
+            0% { text-shadow: 0 0 0 transparent; }
+            40% { text-shadow: 0 0 18px var(--accent-glow); color: var(--accent); }
+            100% { text-shadow: 0 0 0 transparent; }
+        }
+
+        /* ----- Nav logo hover micro-interaction ----- */
+        .nav-logo .logo-dot { transition: transform 0.3s var(--transition-bounce); }
+        .nav-logo:hover .logo-dot { transform: scale(1.4); }
+
+        /* ----- Respect reduced motion ----- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .hero-title .word span { transform: none; opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .cursor-ring, #particleCanvas { display: none !important; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-mark"><span class="logo-dot"></span>Founder Journey</div>
+        <div class="preloader-bar"></div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="grain-overlay"></div>
 
     <div class="mouse-glow" id="mouseGlow"></div>
     <div class="grid-bg"></div>
@@ -1262,7 +1551,7 @@
                 <div class="badge">
                     <span class="badge-dot"></span> 🌎 Digital Founder
                 </div>
-                <h1 class="hero-title">
+                <h1 class="hero-title" id="heroTitle">
                     Construyo <span class="highlight">sistemas</span> que crean libertad.
                 </h1>
                 <p class="hero-subtitle">
@@ -1288,6 +1577,7 @@
                 </div>
             </div>
             <div class="hero-visual">
+                <canvas id="particleCanvas"></canvas>
                 <div class="hero-glow-orb"></div>
                 <div class="hero-glow-orb secondary"></div>
                 <div class="hero-illustration">
@@ -1520,7 +1810,8 @@
                 <!-- Byway Travel -->
                 <a href="https://www.byway.travel/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="project-image">
-                        <img src="byway.png" alt="Byway Travel">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0d1b2a,#1b2838);"></div>
+                        <span class="project-icon-text">Byway Travel</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>Next.js</span><span>React</span><span>Travel Tech</span></div>
@@ -1532,7 +1823,8 @@
                 <!-- Venturas -->
                 <a href="https://venturas.com.br/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
-                        <img src="venturas.png" alt="Venturas">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a1a2e,#16213e);"></div>
+                        <span class="project-icon-text">Venturas</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>WordPress</span><span>SEO</span><span>Brasil</span></div>
@@ -1544,7 +1836,8 @@
                 <!-- Brotas Eco Ação -->
                 <a href="https://www.brotasecoacao.com.br/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                        <img src="brotas.png" alt="Brotas Eco Ação">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0f2027,#203a43);"></div>
+                        <span class="project-icon-text">Brotas Eco Ação</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>HTML/CSS</span><span>JavaScript</span><span>Eco</span></div>
@@ -1556,7 +1849,8 @@
                 <!-- Hostelos -->
                 <a href="https://hostelos.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-image">
-                        <img src="hostelOS.png" alt="Hostelos">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1b1b2f,#2d2d44);"></div>
+                        <span class="project-icon-text">Hostelos</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>Vue.js</span><span>Firebase</span><span>PWA</span></div>
@@ -1568,7 +1862,8 @@
                 <!-- DigitalizaWeb -->
                 <a href="https://digitalizaweb.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="project-image">
-                        <img src="digitaliza.png" alt="DigitalizaWeb">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0a0a2e,#1a1a3e);"></div>
+                        <span class="project-icon-text">DigitalizaWeb</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>Next.js</span><span>Stripe</span><span>SEO</span></div>
@@ -1578,21 +1873,23 @@
                     </div>
                 </a>
                 <!-- Manual IA de Bolsillo -->
-                <a href="https://1founderj.github.io/Manual-IA-de-Bolsillo/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="project-image">
-                        <img src="manual-de-ia.png" alt="Manual IA de Bolsillo">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0d1b2a,#1b2838);"></div>
+                        <span class="project-icon-text">Manual IA</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>Notion</span><span>GPT</span><span>PDF</span></div>
                         <h3>Manual IA de Bolsillo</h3>
                         <p>Guía práctica de prompts y estrategias de IA para emprendedores ocupados.</p>
-                        <span class="project-link-arrow">Visitar sitio →</span>
+                        <span class="project-link-arrow" style="color:var(--text-tertiary);">Próximamente →</span>
                     </div>
-                </a>
-                <!-- Founder Journey (actualizado con imagen real) -->
-                <a href="#" class="project-card" data-aos="fade-up" data-aos-delay="600">
+                </div>
+                <!-- Founder Journey -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="project-image">
-                        <img src="1founderj.png" alt="Founder Journey">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);"></div>
+                        <span class="project-icon-text">Founder Journey</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JS Vanilla</span></div>
@@ -1600,16 +1897,326 @@
                         <p>La plataforma que estás viendo ahora. Construida con vanilla tech y diseño premium.</p>
                         <span class="project-link-arrow" style="color:var(--text-tertiary);">Estás aquí →</span>
                     </div>
-                </a>
+                </div>
                 <!-- El Jardinero -->
-                <a href="https://1founderj.github.io/1jardinero/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="700">
                     <div class="project-image">
-                        <img src="jardinero.png" alt="El Jardinero">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a2a1a,#2d3d2d);"></div>
+                        <span class="project-icon-text">El Jardinero</span>
                     </div>
                     <div class="project-info">
                         <div class="tech-tags"><span>Notion</span><span>Sistemas</span><span>Filosofía</span></div>
                         <h3>El Jardinero</h3>
                         <p>Proyecto filosófico sobre sembrar conocimiento y cultivar libertad con sistemas.</p>
+                        <span class="project-link-arrow" style="color:var(--text-tertiary);">Próximamente →</span>
+                    </div>
+                </div>
+
+                <!-- ===== NUEVOS PROYECTOS AGREGADOS ===== -->
+                <!-- Patricia Coffee Brewers -->
+                <a href="https://patriciacoffee.com.au" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f5f5f5,#cccccc);"></div>
+                        <span class="project-icon-text" style="color:#222;">Patricia Coffee</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Coffee</span><span>Minimalist</span><span>Branding</span></div>
+                        <h3>Patricia Coffee Brewers</h3>
+                        <p>Blanco absoluto, tipografía serif y fotografía en blanco y negro que respira artesanía y calma.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Maison Broussaud -->
+                <a href="https://maisonbroussaud.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="900">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#c9a87c,#e8d5b5);"></div>
+                        <span class="project-icon-text">Maison Broussaud</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Luxury</span><span>Textile</span><span>Craftsmanship</span></div>
+                        <h3>Maison Broussaud</h3>
+                        <p>Paleta de colores tierra y pastel que evoca el sur de Francia. Cada producto se presenta como una obra de arte.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Cantina Tramin -->
+                <a href="https://cantinatramin.it" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#5e2c1a,#2d6a4f);"></div>
+                        <span class="project-icon-text">Cantina Tramin</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Winery</span><span>Italy</span><span>Storytelling</span></div>
+                        <h3>Cantina Tramin</h3>
+                        <p>Experiencia inmersiva con vídeos a pantalla completa de los viñedos alpinos y tipografía italiana clásica.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- The June Motel -->
+                <a href="https://thejunemotel.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f4b6b6,#f7e3b0);"></div>
+                        <span class="project-icon-text">The June Motel</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Hotel</span><span>Boutique</span><span>Vintage</span></div>
+                        <h3>The June Motel</h3>
+                        <p>Paleta de rosas vintage y amarillos pálidos. Reserva integrada sin fricción y fotos reales de huéspedes.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Domaine de Fontenille -->
+                <a href="https://domainefontenille.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1200">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#b39d7b,#7e9a7a);"></div>
+                        <span class="project-icon-text">Domaine de Fontenille</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Hotel</span><span>Winery</span><span>Provençal</span></div>
+                        <h3>Domaine de Fontenille</h3>
+                        <p>Diseño impecable con fotografía de ensueño y storytelling que transporta a la Provenza más auténtica.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Black Pig Meat Co. -->
+                <a href="https://blackpigmeatco.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1300">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a1a1a,#6b4f3c);"></div>
+                        <span class="project-icon-text">Black Pig Meat Co.</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Gourmet</span><span>Meat</span><span>Butchery</span></div>
+                        <h3>Black Pig Meat Co.</h3>
+                        <p>Fondo negro con tipografía bold serif western y fotos de producto sobre madera rústica. Lujo y autenticidad ganadera.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Studio Bisson -->
+                <a href="https://studiobisson.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1400">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#e0e0e0,#b0b0b0);"></div>
+                        <span class="project-icon-text" style="color:#222;">Studio Bisson</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Architecture</span><span>Minimalist</span><span>Portfolio</span></div>
+                        <h3>Studio Bisson</h3>
+                        <p>Parrilla de proyectos en blanco y negro con revelado en hover. Tipografía suiza y espacios generosos.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Casa Cody -->
+                <a href="https://casacody.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1500">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#d48c6b,#8bb3c9);"></div>
+                        <span class="project-icon-text">Casa Cody</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Hotel</span><span>Desert</span><span>Retro</span></div>
+                        <h3>Casa Cody</h3>
+                        <p>Tonos terracota, azul cielo y blanco roto. Imágenes que transmiten el espíritu desértico con luz natural.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Les Confitures du Climont -->
+                <a href="https://confituresduclimont.fr" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1600">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f7d6b0,#8cb369);"></div>
+                        <span class="project-icon-text">Confitures du Climont</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Artisanal</span><span>Jams</span><span>French</span></div>
+                        <h3>Les Confitures du Climont</h3>
+                        <p>Ilustraciones botánicas y fotos de tarros de vidrio sobre mantel de cuadros. La historia de la granja convierte un tarro en experiencia.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Matanzas Creek Winery -->
+                <a href="https://matanzascreek.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1700">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#7d4b8c,#d4b8d4);"></div>
+                        <span class="project-icon-text">Matanzas Creek</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Winery</span><span>Lavender</span><span>Luxury</span></div>
+                        <h3>Matanzas Creek Winery</h3>
+                        <p>Campos de lavanda y viñedos. Paleta púrpura y crema. Tienda online integrada en el relato sensorial.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Can Bordoy Grand House & Garden -->
+                <a href="https://canbordoy.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1800">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#c49a6c,#4a7c59);"></div>
+                        <span class="project-icon-text">Can Bordoy</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Hotel</span><span>Garden</span><span>Mallorca</span></div>
+                        <h3>Can Bordoy Grand House & Garden</h3>
+                        <p>Fotografía de interiores cálidos y patios mediterráneos. El scroll narra la mansión restaurada como un refugio secreto.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Gumption Coffee -->
+                <a href="https://gumptioncoffee.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="1900">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f49b3b,#f5d742);"></div>
+                        <span class="project-icon-text">Gumption Coffee</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Coffee</span><span>Sydney</span><span>Vibrant</span></div>
+                        <h3>Gumption Coffee</h3>
+                        <p>Colores vibrantes, tipografía sans-serif bold e ilustraciones de café. Suscripción y venta de granos a un clic.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Ristorante La Tenda Rossa -->
+                <a href="https://latendarossa.it" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2000">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#c49a6c,#2d5a27);"></div>
+                        <span class="project-icon-text">La Tenda Rossa</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Restaurant</span><span>Tuscany</span><span>Italian</span></div>
+                        <h3>Ristorante La Tenda Rossa</h3>
+                        <p>Hero con mesa preparada bajo una pérgola al atardecer. Menú narrado con storytelling de cada plato y reserva integrada.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Torres Gourmet -->
+                <a href="https://torresgourmet.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2100">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a1a1a,#c9a131);"></div>
+                        <span class="project-icon-text">Torres Gourmet</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>E-commerce</span><span>Gourmet</span><span>Iberian</span></div>
+                        <h3>Torres Gourmet</h3>
+                        <p>E-commerce de ibéricos con fotografía sobre fondo negro, zoom detallado y carrito lateral. Tienda premium sencilla y efectiva.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- The Old Clare Hotel -->
+                <a href="https://theoldclare.com.au" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2200">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#b85c38,#6b6b6b);"></div>
+                        <span class="project-icon-text">The Old Clare</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Hotel</span><span>Industrial</span><span>Sydney</span></div>
+                        <h3>The Old Clare Hotel</h3>
+                        <p>Estética industrial con ladrillo visto y tipografía sans-serif geométrica. La historia del edificio patrimonial se teje con diseño contemporáneo.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Maison De Greef -->
+                <a href="https://maisonedegreef.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2300">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#e8d5b5,#f5f0e8);"></div>
+                        <span class="project-icon-text" style="color:#222;">Maison De Greef</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Linen</span><span>Belgian</span><span>Minimalist</span></div>
+                        <h3>Maison De Greef</h3>
+                        <p>Minimalismo belga absoluto con paleta arena y lino. Imágenes casi táctiles que ponen el foco en la textura.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Chocolat Monbana -->
+                <a href="https://monbana.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2400">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#4a2c1a,#c9a131);"></div>
+                        <span class="project-icon-text">Chocolat Monbana</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Chocolate</span><span>Luxury</span><span>French</span></div>
+                        <h3>Chocolat Monbana</h3>
+                        <p>Marrón chocolate, dorado y blanco. Las tabletas se presentan con animaciones de deslizamiento y recetas que acompañan la compra.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Fortis Law -->
+                <a href="https://fortislaw.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2500">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0d1b2a,#e0e0e0);"></div>
+                        <span class="project-icon-text">Fortis Law</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Law</span><span>Professional</span><span>Denver</span></div>
+                        <h3>Fortis Law</h3>
+                        <p>Limpio, profesional, sin estridencias. Azul marino, blanco y toques dorados. Transmite solidez y cercanía.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Wescover -->
+                <a href="https://wescover.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2600">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f5f0e8,#d4c9b8);"></div>
+                        <span class="project-icon-text" style="color:#222;">Wescover</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Design</span><span>Marketplace</span><span>Editorial</span></div>
+                        <h3>Wescover</h3>
+                        <p>Cuadrícula de productos con filtros por espacio y estilo. Fotografía editorial que convierte la búsqueda en una revista.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- The Balfour -->
+                <a href="https://thebalfourmiami.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2700">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#2d6a4f,#f5f0e8);"></div>
+                        <span class="project-icon-text">The Balfour</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Restaurant</span><span>Miami</span><span>Botanical</span></div>
+                        <h3>The Balfour</h3>
+                        <p>Paleta de verdes botánicos, blanco y latón. Hero a pantalla completa del comedor con luz natural. Lujo informal.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- La Fromagerie du Comptoir -->
+                <a href="https://comptoir-fromager.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2800">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#f7d6b0,#f5f0e8);"></div>
+                        <span class="project-icon-text">Fromagerie du Comptoir</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Cheese</span><span>Paris</span><span>Artisanal</span></div>
+                        <h3>La Fromagerie du Comptoir</h3>
+                        <p>Tipografía manuscrita y fotos de mostrador. La historia de los quesos y su maridaje se presenta como una guía visual.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+
+                <!-- Mountain Rose Herbs -->
+                <a href="https://mountainroseherbs.com" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="2900">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#4a7c59,#a8c9a8);"></div>
+                        <span class="project-icon-text">Mountain Rose Herbs</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Herbs</span><span>Organic</span><span>Wellness</span></div>
+                        <h3>Mountain Rose Herbs</h3>
+                        <p>Fondo blanco con acuarelas botánicas y fotografías de hierbas secas. Sostenibilidad como columna vertebral del diseño.</p>
                         <span class="project-link-arrow">Visitar sitio →</span>
                     </div>
                 </a>
@@ -1857,6 +2464,7 @@
                             requestAnimationFrame(updateCounter);
                         } else {
                             el.textContent = target + '+';
+                            el.classList.add('counted');
                         }
                     }
                     requestAnimationFrame(updateCounter);
@@ -1882,6 +2490,246 @@
             'font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: #999;');
         console.log('%cConstruyo sistemas que crean libertad.',
             'font-family: "Inter", sans-serif; font-size: 0.9rem; color: #CFCFCF; font-style: italic;');
+
+        /* ============================================================
+           WOW LAYER — JS: preloader, progreso, cursor, partículas,
+           tilt 3D, magnetismo, ripple, reveal de título, timeline.
+        ============================================================ */
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isTouch = !window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        /* ---- Preloader ---- */
+        (function handlePreloader() {
+            const pre = document.getElementById('preloader');
+            if (!pre) return;
+            function hidePreloader() {
+                pre.classList.add('hidden');
+            }
+            if (document.readyState === 'complete') {
+                setTimeout(hidePreloader, 300);
+            } else {
+                window.addEventListener('load', () => setTimeout(hidePreloader, 300));
+            }
+            // Fallback de seguridad por si algo bloquea el evento load
+            setTimeout(hidePreloader, 1800);
+        })();
+
+        /* ---- Scroll progress bar ---- */
+        const scrollProgress = document.getElementById('scrollProgress');
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = pct + '%';
+        }
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress();
+
+        /* ---- Hero title word-by-word reveal ---- */
+        (function splitHeroTitle() {
+            const el = document.getElementById('heroTitle');
+            if (!el) return;
+            const nodes = Array.from(el.childNodes);
+            el.innerHTML = '';
+            let wordIndex = 0;
+            nodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const parts = node.textContent.split(/(\s+)/);
+                    parts.forEach(part => {
+                        if (part.trim() === '') {
+                            el.appendChild(document.createTextNode(part));
+                        } else {
+                            const wrap = document.createElement('span');
+                            wrap.className = 'word';
+                            const inner = document.createElement('span');
+                            inner.textContent = part;
+                            inner.style.animationDelay = (wordIndex * 0.07) + 's';
+                            wordIndex++;
+                            wrap.appendChild(inner);
+                            el.appendChild(wrap);
+                        }
+                    });
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const wrap = document.createElement('span');
+                    wrap.className = 'word';
+                    const inner = document.createElement('span');
+                    inner.className = node.className;
+                    inner.textContent = node.textContent;
+                    inner.style.animationDelay = (wordIndex * 0.07) + 's';
+                    wordIndex++;
+                    wrap.appendChild(inner);
+                    el.appendChild(wrap);
+                }
+            });
+        })();
+
+        /* ---- Custom cursor ring ---- */
+        if (!isTouch && !reduceMotion) {
+            const ring = document.getElementById('cursorRing');
+            let ringX = -100, ringY = -100, ringCX = -100, ringCY = -100;
+            document.addEventListener('mousemove', (e) => {
+                ringX = e.clientX;
+                ringY = e.clientY;
+                ring.classList.add('active');
+            });
+            document.addEventListener('mouseleave', () => ring.classList.remove('active'));
+            function animateRing() {
+                ringCX += (ringX - ringCX) * 0.18;
+                ringCY += (ringY - ringCY) * 0.18;
+                ring.style.left = ringCX + 'px';
+                ring.style.top = ringCY + 'px';
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
+
+            document.querySelectorAll('a, button, .card, .project-card, .product-card, .blog-card, .philosophy-card').forEach(el => {
+                el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+            });
+        }
+
+        /* ---- Magnetic buttons ---- */
+        if (!isTouch && !reduceMotion) {
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translate(0, 0)';
+                });
+            });
+        }
+
+        /* ---- Button ripple on click ---- */
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const rect = btn.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.className = 'ripple';
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 650);
+            });
+        });
+
+        /* ---- 3D tilt on cards / illustration ---- */
+        if (!isTouch && !reduceMotion) {
+            document.querySelectorAll('.card, .project-card, .product-card, .philosophy-card, .service-block, .hero-illustration').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    const rotateX = (y * -6).toFixed(2);
+                    const rotateY = (x * 6).toFixed(2);
+                    card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
+        /* ---- Timeline scroll reveal ---- */
+        const timelineEl = document.querySelector('.timeline');
+        if (timelineEl) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        timelineEl.classList.add('in-view');
+                        timelineObserver.unobserve(timelineEl);
+                    }
+                });
+            }, { threshold: 0.2 });
+            timelineObserver.observe(timelineEl);
+
+            const items = document.querySelectorAll('.timeline-item');
+            const itemObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        const idx = Array.from(items).indexOf(entry.target);
+                        entry.target.style.transitionDelay = (idx * 0.08) + 's';
+                        entry.target.classList.add('in-view');
+                        itemObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            items.forEach(item => itemObserver.observe(item));
+        }
+
+        /* ---- Particle network canvas (hero) ---- */
+        if (!reduceMotion) {
+            const canvas = document.getElementById('particleCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let raf;
+
+                function resizeCanvas() {
+                    const parent = canvas.parentElement;
+                    canvas.width = parent.clientWidth;
+                    canvas.height = parent.clientHeight;
+                }
+
+                function initParticles() {
+                    const count = isTouch ? 18 : 34;
+                    particles = Array.from({ length: count }, () => ({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.35,
+                        vy: (Math.random() - 0.5) * 0.35,
+                        r: Math.random() * 1.6 + 0.6
+                    }));
+                }
+
+                function drawParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particles.forEach(p => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    });
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 110) {
+                                ctx.strokeStyle = `rgba(0, 255, 136, ${0.14 * (1 - dist / 110)})`;
+                                ctx.lineWidth = 1;
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    particles.forEach(p => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(0, 255, 136, 0.55)';
+                        ctx.fill();
+                    });
+                    raf = requestAnimationFrame(drawParticles);
+                }
+
+                resizeCanvas();
+                initParticles();
+                drawParticles();
+                window.addEventListener('resize', () => {
+                    cancelAnimationFrame(raf);
+                    resizeCanvas();
+                    initParticles();
+                    drawParticles();
+                });
+            }
+        }
     </script>
 </body>
 </html>
