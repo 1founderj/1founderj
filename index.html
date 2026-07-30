@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Founder Journey | Sistemas que crean libertad">
+    <meta name="description" content="Construyo sistemas, automatizaciones e inteligencia artificial para ayudar a emprendedores a recuperar tiempo, aumentar ingresos y crear negocios escalables.">
+    <meta name="keywords" content="Founder Journey, Inteligencia Artificial, Automatización, Notion, Sistemas, Desarrollo Web, Digital Nomad, AI Consultant, Landing Pages, SaaS">
+    <meta name="author" content="Founder Journey">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Founder Journey | Sistemas que crean libertad">
+    <meta property="og:description" content="Construyo sistemas, automatizaciones e IA para ayudar a emprendedores a recuperar tiempo y crear negocios escalables.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://founderjourney.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Founder Journey | Sistemas que crean libertad">
+    <meta name="twitter:description" content="IA + Sistemas + Automatización + Desarrollo Web. Construyo sistemas que crean libertad.">
+    <meta name="theme-color" content="#050505">
+    <title>Founder Journey | Sistemas que crean libertad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-elevated: #181818;
+            --bg-card: #141414;
+            --accent: #00FF88;
+            --accent-glow: rgba(0, 255, 136, 0.25);
+            --accent-subtle: rgba(0, 255, 136, 0.08);
+            --accent-hover: #00cc6a;
+            --blue-accent: #3b82f6;
+            --blue-glow: rgba(59, 130, 246, 0.3);
+            --text-primary: #FFFFFF;
+            --text-secondary: #CFCFCF;
+            --text-tertiary: #999999;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(18, 18, 18, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --max-width: 1200px;
+            --nav-height: 70px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: default;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 15% 20%, rgba(0, 255, 136, 0.03) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 500px at 85% 60%, rgba(59, 130, 246, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 300px 300px at 50% 80%, rgba(0, 255, 136, 0.02) 0%, transparent 60%);
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 20%, transparent 65%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 20%, transparent 65%);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition-smooth);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            z-index: 1001;
+            transition: var(--transition-fast);
+        }
+        .nav-logo:hover {
+            color: var(--accent);
+        }
+        .nav-logo .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 14px var(--accent-glow);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 10px var(--accent-glow);
+            }
+            50% {
+                box-shadow: 0 0 22px var(--accent-glow), 0 0 40px rgba(0, 255, 136, 0.15);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            transition: width var(--transition-fast);
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 6px 30px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-medium);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-2px);
+        }
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-medium);
+            transform: translateY(-1px);
+        }
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition-fast);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--nav-height);
+            position: relative;
+            z-index: 1;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-subtle);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            width: fit-content;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent) 0%, #00e070 40%, #00c85a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        .hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 520px;
+            animation: fadeInUp 0.9s ease-out;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.1s ease-out;
+        }
+        .hero-stat {
+            text-align: left;
+        }
+        .hero-stat .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+        }
+        .hero-stat .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+        }
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInRight 1s ease-out;
+        }
+        .hero-glow-orb {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.18) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%);
+            filter: blur(60px);
+            animation: float-orb 6s ease-in-out infinite;
+            position: absolute;
+        }
+        .hero-glow-orb.secondary {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            top: 20%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+        @keyframes float-orb {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(20px, -30px) scale(1.08);
+            }
+            66% {
+                transform: translate(-15px, 20px) scale(0.94);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .hero-illustration {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1;
+            border-radius: var(--radius-xl);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+        .hero-illustration .inner-glow {
+            position: absolute;
+            inset: 20px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-illustration .code-lines {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            line-height: 2;
+            opacity: 0.7;
+            text-align: left;
+            padding: 30px;
+        }
+        .hero-illustration .code-lines .accent-line {
+            color: var(--accent);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .section-header {
+            margin-bottom: 50px;
+        }
+        .section-header.centered {
+            text-align: center;
+        }
+        .section-header.centered .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 136, 0.04), transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .card>* {
+            position: relative;
+            z-index: 1;
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: var(--accent-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--accent);
+            transition: var(--transition-smooth);
+        }
+        .card:hover .card-icon {
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .card p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--blue-accent), transparent);
+            border-radius: 1px;
+        }
+        .timeline-item {
+            position: relative;
+            padding: 16px 0 16px 28px;
+            transition: var(--transition-fast);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 22px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: var(--transition-fast);
+        }
+        .timeline-item:hover::before {
+            box-shadow: 0 0 22px var(--accent-glow);
+            transform: scale(1.3);
+        }
+        .timeline-item .timeline-year {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+        .timeline-item .timeline-content {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ===== PHILOSOPHY CARDS ===== */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .philosophy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .philosophy-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.08);
+            transform: translateY(-4px);
+        }
+        .philosophy-card .phil-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .philosophy-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .philosophy-card p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .service-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: var(--transition-smooth);
+        }
+        .service-block:hover {
+            border-color: var(--border-medium);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        .service-block h3 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+        .service-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .service-block ul li {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            padding-left: 16px;
+            position: relative;
+        }
+        .service-block ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* ===== PROJECT CARDS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .project-card:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .project-image {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-image .project-gradient {
+            position: absolute;
+            inset: 0;
+            opacity: 0.6;
+        }
+        .project-image .project-icon-text {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            letter-spacing: -0.03em;
+            text-align: center;
+            padding: 0 16px;
+        }
+        .project-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .project-info .tech-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .project-info .tech-tags span {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: var(--bg-elevated);
+            color: var(--text-tertiary);
+            padding: 4px 10px;
+            border-radius: 50px;
+            border: 1px solid var(--border-subtle);
+        }
+        .project-info p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+        .project-info .btn-ghost {
+            align-self: flex-start;
+            margin-top: 4px;
+        }
+        .project-link-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            transition: var(--transition-fast);
+        }
+        .project-card:hover .project-link-arrow {
+            gap: 8px;
+        }
+
+        /* ===== PRODUCTS GRID ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            cursor: default;
+        }
+        .product-card:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        .product-card .product-emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .product-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .product-card p {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+        .product-card.coming-soon {
+            opacity: 0.55;
+            border-style: dashed;
+        }
+
+        /* ===== BLOG CARDS ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .blog-card:hover {
+            border-color: var(--border-medium);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .blog-card .blog-category {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        .blog-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .blog-card p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+            padding: 120px 0;
+        }
+        .cta-section .cta-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            filter: blur(80px);
+        }
+        .cta-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 50px 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: var(--transition-fast);
+        }
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            border: 1px solid var(--border-subtle);
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+        }
+        .newsletter-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .newsletter-input-group input {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--border-medium);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+        .newsletter-input-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-subtle);
+        }
+        .newsletter-input-group .btn {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== MOBILE NAV ===== */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-smooth);
+        }
+        .mobile-nav.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-nav a {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            transition: var(--transition-fast);
+        }
+        .mobile-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== MOUSE GLOW FOLLOWER ===== */
+        .mouse-glow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.06) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: left 0.15s ease-out, top 0.15s ease-out;
+            will-change: left, top;
+            display: none;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .mouse-glow {
+                display: block;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content {
+                align-items: center;
+            }
+            .hero-subtitle {
+                max-width: 100%;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-illustration {
+                max-width: 280px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline::before {
+                left: 10px;
+            }
+            .timeline-item::before {
+                left: -24px;
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .mobile-nav {
+                display: flex;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 7vw, 2.8rem);
+            }
+            .hero-stats {
+                gap: 20px;
+            }
+            .hero-stat .stat-number {
+                font-size: 1.5rem;
+            }
+            .cards-grid,
+            .philosophy-grid,
+            .services-grid,
+            .projects-grid,
+            .blog-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .cta-section {
+                padding: 80px 0;
+            }
+            .container {
+                padding: 0 18px;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .hero-illustration {
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-stats {
+                gap: 14px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-illustration {
+                max-width: 180px;
+            }
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Utility */
+        .text-accent {
+            color: var(--accent);
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mouse-glow" id="mouseGlow"></div>
+    <div class="grid-bg"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <span class="logo-dot"></span> Founder Journey
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#cta" class="btn btn-primary nav-cta">Trabajemos juntos</a>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#inicio" class="mobile-nav-link">Inicio</a>
+        <a href="#servicios" class="mobile-nav-link">Servicios</a>
+        <a href="#proyectos" class="mobile-nav-link">Proyectos</a>
+        <a href="#blog" class="mobile-nav-link">Blog</a>
+        <a href="#recursos" class="mobile-nav-link">Recursos</a>
+        <a href="#contacto" class="mobile-nav-link">Contacto</a>
+        <a href="#cta" class="btn btn-primary mobile-nav-link" style="margin-top:10px;">Trabajemos juntos</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span> 🌎 Digital Founder
+                </div>
+                <h1 class="hero-title">
+                    Construyo <span class="highlight">sistemas</span> que crean libertad.
+                </h1>
+                <p class="hero-subtitle">
+                    Ayudo a emprendedores a utilizar Inteligencia Artificial, automatización y sistemas para recuperar tiempo, aumentar ingresos y construir negocios que funcionen incluso cuando no están trabajando.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-primary btn-lg">Trabajemos juntos</a>
+                    <a href="#proyectos" class="btn btn-secondary btn-lg">Ver proyectos</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-number" data-count="100">0</div>
+                        <div class="stat-label">Empresas ayudadas</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-number" data-count="32">0</div>
+                        <div class="stat-label">Países visitados</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-number" data-count="10">0</div>
+                        <div class="stat-label">Años de experiencia</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-glow-orb"></div>
+                <div class="hero-glow-orb secondary"></div>
+                <div class="hero-illustration">
+                    <div class="inner-glow"></div>
+                    <div class="code-lines">
+                        <span class="accent-line">const</span> freedom = <span class="accent-line">await</span><br>
+                        buildSystem({<br>
+                        &nbsp;&nbsp;ai: <span class="accent-line">true</span>,<br>
+                        &nbsp;&nbsp;automation: <span class="accent-line">true</span>,<br>
+                        &nbsp;&nbsp;scale: <span class="accent-line">true</span><br>
+                        });<br>
+                        <span class="accent-line">return</span> freedom;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ¿QUÉ HAGO? ===== -->
+    <section id="servicios">
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">¿Qué hago?</p>
+                <h2 class="section-title">Soluciones para escalar tu negocio</h2>
+                <p class="section-subtitle">Combinación de tecnología, estrategia y sistemas para emprendedores que buscan libertad.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card-icon"><i data-lucide="brain" style="width:24px;height:24px;"></i></div>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Implementación de agentes IA, GPT personalizados y prompts estratégicos para automatizar tareas complejas.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i data-lucide="zap" style="width:24px;height:24px;"></i></div>
+                    <h3>Automatizaciones</h3>
+                    <p>Flujos de trabajo que eliminan tareas repetitivas y conectan tus herramientas favoritas sin código.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i data-lucide="code-2" style="width:24px;height:24px;"></i></div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Landing pages, web apps, SaaS y dashboards construidos con tecnologías modernas y diseño premium.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i data-lucide="trending-up" style="width:24px;height:24px;"></i></div>
+                    <h3>Marketing Digital</h3>
+                    <p>SEO, contenido estratégico, embudos de conversión y growth hacking para escalar tu alcance.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i data-lucide="lightbulb" style="width:24px;height:24px;"></i></div>
+                    <h3>Consultoría</h3>
+                    <p>Auditoría completa de tu negocio digital con recomendaciones accionables para optimizar cada área.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon"><i data-lucide="users" style="width:24px;height:24px;"></i></div>
+                    <h3>Mentoría</h3>
+                    <p>Acompañamiento personalizado para founders y emprendedores que quieren construir negocios escalables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOBRE FOUNDER JOURNEY ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-label">Mi historia</p>
+                <h2 class="section-title">De agencia tradicional a nómada digital</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;" data-aos="fade-up">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014</div>
+                        <div class="timeline-content">🇧🇷 Brasil — Primeros pasos en el mundo digital</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-content">🏢 Fundé mi agencia de desarrollo web</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">🎯 +100 clientes en 12 países</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">🤖 Descubrí el poder de la IA aplicada</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content">✈️ Inicié el nomadismo digital</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">🚀 Nace Founder Journey</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Ahora</div>
+                        <div class="timeline-content">🔓 Construyendo libertad con sistemas</div>
+                    </div>
+                </div>
+                <div>
+                    <p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;margin-bottom:20px;">
+                        <strong>No vendo páginas web.</strong>
+                    </p>
+                    <p style="color:var(--text-tertiary);font-size:1rem;line-height:1.7;">
+                        Construyo sistemas completos que permiten a los negocios crecer sin depender de más horas de trabajo. La tecnología debe trabajar para ti, no al revés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILOSOFÍA ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Filosofía</p>
+                <h2 class="section-title">Inspirado en El Jardinero</h2>
+                <p class="section-subtitle">Tres pilares que guían cada proyecto y cada decisión.</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="phil-icon">🌱</div>
+                    <h3>Sembramos conocimiento</h3>
+                    <p>Compartir lo que sabemos es la base del crecimiento. Cada interacción es una semilla de valor real.</p>
+                </div>
+                <div class="philosophy-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="phil-icon">🌿</div>
+                    <h3>Cultivamos libertad</h3>
+                    <p>La libertad no se compra, se cultiva con sistemas que eliminan dependencias y crean espacio para vivir.</p>
+                </div>
+                <div class="philosophy-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="phil-icon">🏗️</div>
+                    <h3>Construimos sistemas</h3>
+                    <p>Sistemas sólidos que funcionan incluso cuando no estás trabajando. Automatización con propósito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICIOS DETALLADOS ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Servicios</p>
+                <h2 class="section-title">Lo que puedo construir para ti</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-block" data-aos="fade-up" data-aos-delay="0">
+                    <h3>🤖 IA</h3>
+                    <ul>
+                        <li>Automatización con IA</li>
+                        <li>Prompts estratégicos</li>
+                        <li>Integración GPT</li>
+                        <li>Agentes IA</li>
+                    </ul>
+                </div>
+                <div class="service-block" data-aos="fade-up" data-aos-delay="100">
+                    <h3>💻 Desarrollo</h3>
+                    <ul>
+                        <li>Landing Pages</li>
+                        <li>Web Apps</li>
+                        <li>SaaS</li>
+                        <li>Dashboards</li>
+                    </ul>
+                </div>
+                <div class="service-block" data-aos="fade-up" data-aos-delay="200">
+                    <h3>⚙️ Sistemas</h3>
+                    <ul>
+                        <li>Notion</li>
+                        <li>SOPs</li>
+                        <li>CRM</li>
+                        <li>Automatización</li>
+                    </ul>
+                </div>
+                <div class="service-block" data-aos="fade-up" data-aos-delay="300">
+                    <h3>📈 Marketing</h3>
+                    <ul>
+                        <li>SEO</li>
+                        <li>Contenido</li>
+                        <li>Embudos</li>
+                        <li>Conversión</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== METODOLOGÍA ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Metodología</p>
+                <h2 class="section-title">Cómo trabajamos juntos</h2>
+            </div>
+            <div class="timeline" style="max-width:500px;margin:0 auto;" data-aos="fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-content">🔍 <strong>Descubrimiento</strong> — Entendemos tu negocio a fondo</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">📋 <strong>Auditoría</strong> — Identificamos oportunidades de mejora</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">🎨 <strong>Diseño</strong> — Creamos la solución a medida</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">⚡ <strong>Desarrollo</strong> — Construimos con tecnología moderna</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">🔄 <strong>Automatización</strong> — Conectamos y optimizamos flujos</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">📊 <strong>Optimización</strong> — Medimos y ajustamos</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">🚀 <strong>Escalamiento</strong> — Llevamos tu negocio al siguiente nivel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROYECTOS ===== -->
+    <section id="proyectos">
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Proyectos</p>
+                <h2 class="section-title">Lo que he construido</h2>
+                <p class="section-subtitle">Casos reales de sistemas, landing pages y automatizaciones para clientes en todo el mundo.</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Byway Travel -->
+                <a href="https://www.byway.travel/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0d1b2a,#1b2838);"></div>
+                        <span class="project-icon-text">Byway Travel</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Next.js</span><span>React</span><span>Travel Tech</span></div>
+                        <h3>Byway Travel</h3>
+                        <p>Plataforma de viajes que ofrece experiencias únicas con tecnología de punta y diseño inmersivo.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+                <!-- Venturas -->
+                <a href="https://venturas.com.br/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a1a2e,#16213e);"></div>
+                        <span class="project-icon-text">Venturas</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>WordPress</span><span>SEO</span><span>Brasil</span></div>
+                        <h3>Venturas</h3>
+                        <p>Site corporativo de alto rendimiento para una empresa brasileña líder en su segmento.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+                <!-- Brotas Eco Ação -->
+                <a href="https://www.brotasecoacao.com.br/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0f2027,#203a43);"></div>
+                        <span class="project-icon-text">Brotas Eco Ação</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>HTML/CSS</span><span>JavaScript</span><span>Eco</span></div>
+                        <h3>Brotas Eco Ação</h3>
+                        <p>Plataforma digital para un proyecto ecológico y de aventura en Brotas, Brasil.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+                <!-- Hostelos -->
+                <a href="https://hostelos.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1b1b2f,#2d2d44);"></div>
+                        <span class="project-icon-text">Hostelos</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Vue.js</span><span>Firebase</span><span>PWA</span></div>
+                        <h3>Hostelos</h3>
+                        <p>Sistema de gestión para hostels con check-in digital y automatización de reservas.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+                <!-- DigitalizaWeb -->
+                <a href="https://digitalizaweb.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0a0a2e,#1a1a3e);"></div>
+                        <span class="project-icon-text">DigitalizaWeb</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Next.js</span><span>Stripe</span><span>SEO</span></div>
+                        <h3>DigitalizaWeb</h3>
+                        <p>Plataforma de digitalización para pequeños negocios con pagos integrados y embudos de conversión.</p>
+                        <span class="project-link-arrow">Visitar sitio →</span>
+                    </div>
+                </a>
+                <!-- Manual IA de Bolsillo -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0d1b2a,#1b2838);"></div>
+                        <span class="project-icon-text">Manual IA</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Notion</span><span>GPT</span><span>PDF</span></div>
+                        <h3>Manual IA de Bolsillo</h3>
+                        <p>Guía práctica de prompts y estrategias de IA para emprendedores ocupados.</p>
+                        <span class="project-link-arrow" style="color:var(--text-tertiary);">Próximamente →</span>
+                    </div>
+                </div>
+                <!-- Founder Journey -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);"></div>
+                        <span class="project-icon-text">Founder Journey</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JS Vanilla</span></div>
+                        <h3>Founder Journey</h3>
+                        <p>La plataforma que estás viendo ahora. Construida con vanilla tech y diseño premium.</p>
+                        <span class="project-link-arrow" style="color:var(--text-tertiary);">Estás aquí →</span>
+                    </div>
+                </div>
+                <!-- El Jardinero -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="project-image">
+                        <div class="project-gradient" style="background:linear-gradient(135deg,#1a2a1a,#2d3d2d);"></div>
+                        <span class="project-icon-text">El Jardinero</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="tech-tags"><span>Notion</span><span>Sistemas</span><span>Filosofía</span></div>
+                        <h3>El Jardinero</h3>
+                        <p>Proyecto filosófico sobre sembrar conocimiento y cultivar libertad con sistemas.</p>
+                        <span class="project-link-arrow" style="color:var(--text-tertiary);">Próximamente →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTOS DIGITALES ===== -->
+    <section id="recursos">
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Productos digitales</p>
+                <h2 class="section-title">Recursos para tu libertad</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="product-emoji">📘</div>
+                    <h4>Manual IA de Bolsillo</h4>
+                    <p>Guía práctica de prompts</p>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="80">
+                    <div class="product-emoji">📋</div>
+                    <h4>Guías de sistemas</h4>
+                    <p>Frameworks probados</p>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="160">
+                    <div class="product-emoji">🗂️</div>
+                    <h4>Plantillas Notion</h4>
+                    <p>Organización inteligente</p>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="240">
+                    <div class="product-emoji">💬</div>
+                    <h4>Pack de Prompts</h4>
+                    <p>100+ prompts estratégicos</p>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="320">
+                    <div class="product-emoji">🎓</div>
+                    <h4>Cursos online</h4>
+                    <p>IA + Automatización</p>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-emoji">📚</div>
+                    <h4>eBooks</h4>
+                    <p>Conocimiento condensado</p>
+                </div>
+                <div class="product-card coming-soon" data-aos="fade-up" data-aos-delay="480">
+                    <div class="product-emoji">🔮</div>
+                    <h4>Próximamente</h4>
+                    <p>Nuevos recursos en camino</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG ===== -->
+    <section id="blog">
+        <div class="container">
+            <div class="section-header centered" data-aos="fade-up">
+                <p class="section-label">Blog</p>
+                <h2 class="section-title">Últimos artículos</h2>
+            </div>
+            <div class="blog-grid">
+                <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="0">
+                    <span class="blog-category">IA</span>
+                    <h4>Cómo usar GPT para automatizar tu negocio en 2025</h4>
+                    <p>Estrategias prácticas para integrar IA en tus flujos diarios.</p>
+                </a>
+                <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="blog-category">Sistemas</span>
+                    <h4>El poder de Notion como segundo cerebro digital</h4>
+                    <p>Organiza tu vida y negocio con un sistema que escala contigo.</p>
+                </a>
+                <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="blog-category">Nomadismo</span>
+                    <h4>32 países después: lecciones de un nómada digital</h4>
+                    <p>Lo que he aprendido trabajando desde cualquier lugar del mundo.</p>
+                </a>
+                <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="blog-category">Productividad</span>
+                    <h4>Sistemas que funcionan mientras duermes</h4>
+                    <p>Cómo construir un negocio que no dependa de tu presencia constante.</p>
+                </a>
+                <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="400">
+                    <span class="blog-category">Founder Journey</span>
+                    <h4>De burnout a libertad: mi viaje como founder</h4>
+                    <p>La historia detrás de Founder Journey y por qué construyo sistemas.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="cta">
+        <div class="cta-glow"></div>
+        <div class="container" style="position:relative;z-index:1;">
+            <h2 data-aos="fade-up">¿Listo para construir un negocio que te dé libertad?</h2>
+            <a href="#" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="150">
+                Agenda una llamada
+                <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="nav-logo" style="margin-bottom:12px;">
+                        <span class="logo-dot"></span> Founder Journey
+                    </a>
+                    <p style="color:var(--text-tertiary);font-size:0.85rem;max-width:280px;">
+                        Construyo sistemas que crean libertad. IA + Automatización + Desarrollo Web para emprendedores.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px;"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                        <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#recursos">Recursos</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <a href="#">Consultoría IA</a>
+                    <a href="#">Desarrollo Web</a>
+                    <a href="#">Automatización</a>
+                    <a href="#">Mentoría</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="font-size:0.85rem;">Recibe insights sobre IA, sistemas y libertad digital.</p>
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="tu@email.com" aria-label="Email para newsletter">
+                        <button class="btn btn-primary" style="padding:10px 16px;">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Founder Journey. Todos los derechos reservados. Construido con sistemas que crean libertad.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script>
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60,
+            disable: 'mobile'
+        });
+
+        lucide.createIcons();
+
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function updateNavbar() {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+        updateNavbar();
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        const mouseGlow = document.getElementById('mouseGlow');
+        let mouseX = -500;
+        let mouseY = -500;
+        let currentX = -500;
+        let currentY = -500;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            currentX += (mouseX - currentX) * 0.12;
+            currentY += (mouseY - currentY) * 0.12;
+            mouseGlow.style.left = currentX + 'px';
+            mouseGlow.style.top = currentY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
+            });
+        });
+
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-count'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function updateCounter(timestamp) {
+                        const elapsed = timestamp - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(target * eased);
+                        el.textContent = current + '+';
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.textContent = target + '+';
+                        }
+                    }
+                    requestAnimationFrame(updateCounter);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => counterObserver.observe(el));
+
+        const heroOrbs = document.querySelectorAll('.hero-glow-orb');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            heroOrbs.forEach((orb, i) => {
+                const factor = (i + 1) * 1.3;
+                orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+
+        console.log('%c🌱 Founder Journey %cv1.0',
+            'font-family: "Space Grotesk", sans-serif; font-size: 1.4rem; font-weight: 700; color: #00FF88;',
+            'font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: #999;');
+        console.log('%cConstruyo sistemas que crean libertad.',
+            'font-family: "Inter", sans-serif; font-size: 0.9rem; color: #CFCFCF; font-style: italic;');
+    </script>
+</body>
+</html>
