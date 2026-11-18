@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Desarrollo web, sistemas e IA | Founder Journey</title>
+<meta name="description" content="Diseño y desarrollo sitios web, sistemas de gestión y automatizaciones con IA para pymes y emprendedores. Proyectos reales, proceso claro y contacto directo.">
+<meta name="theme-color" content="#0b0b0a"><meta property="og:title" content="Founder Journey | Webs, sistemas y automatización">
+<meta property="og:description" content="Sitios web, sistemas de gestión y automatización con IA para negocios."><meta property="og:type" content="website">
+<link rel="canonical" href="https://1founder.vercel.app/desarrollo.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0a;--bg2:#121211;--panel:#171715;--line:rgba(244,240,232,.13);--tx:#f4f0e8;--tx2:#bdb8ad;--tx3:#89857d;--ac:#6df2b0;--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font:400 16px/1.7 var(--sans);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased}
+a{color:inherit}img{max-width:100%;height:auto}button,input,textarea{font:inherit}
+.wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+.skip{position:absolute;left:-9999px;top:10px;background:var(--ac);color:#06110b;padding:10px 14px;z-index:100}.skip:focus{left:10px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:4px}
+nav{position:sticky;top:0;z-index:50;background:rgba(11,11,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font:400 1.45rem var(--serif);letter-spacing:-.04em;text-decoration:none;white-space:nowrap}.brand span{color:var(--ac)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}.nav-links a{font-size:.86rem;text-decoration:none;color:var(--tx2)}.nav-links a:hover{color:var(--tx)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 21px;border:1px solid var(--tx);background:transparent;color:var(--tx);text-decoration:none;font-size:.88rem;font-weight:600;cursor:pointer;transition:.2s}
+.btn.primary{background:var(--tx);color:var(--bg)}.btn.primary:hover{background:var(--ac);border-color:var(--ac)}
+.btn.outline:hover{background:var(--tx);color:var(--bg)}
+.eyebrow,.label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ac);margin-bottom:22px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.045em;line-height:1.08}
+h1{font-size:clamp(3rem,7vw,6.3rem)}h2{font-size:clamp(2.2rem,4.5vw,4rem)}h3{font-size:1.55rem}
+.lead{font-size:clamp(1.05rem,1.7vw,1.22rem);color:var(--tx2);max-width:620px;margin:28px 0 34px}
+.muted{color:var(--tx2)}.small{font-size:.86rem;color:var(--tx3)}
+section{padding:112px 0;border-top:1px solid var(--line)}
+.section-intro{max-width:720px}.section-intro>p:last-child{color:var(--tx2);margin-top:20px;max-width:600px}
+.hero{padding:112px 0 104px;border:0}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.hero h1 em{color:var(--ac);font-style:italic}.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{font-size:.82rem;color:var(--tx3);margin-top:20px}
+.visual-panel{min-height:390px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 42%,rgba(109,242,176,.12),transparent 55%),linear-gradient(145deg,#191b18,#0c0d0b);display:grid;place-items:center;padding:30px;position:relative;overflow:hidden}
+.visual-panel:before,.visual-panel:after{content:"";position:absolute;border:1px solid rgba(109,242,176,.14);transform:rotate(45deg);width:280px;height:280px}
+.visual-panel:after{width:380px;height:380px}
+.visual-mark{position:relative;z-index:1;text-align:center}.visual-mark strong{display:block;font:400 clamp(2rem,4vw,3.4rem) var(--serif);letter-spacing:.08em}.visual-mark span{font-size:.68rem;letter-spacing:.25em;color:var(--ac)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:58px}
+.card{background:var(--bg);padding:34px 30px}.card .num{font:italic 1rem var(--serif);color:var(--ac);display:block;margin-bottom:28px}.card h3{margin-bottom:14px}.card p{font-size:.94rem;color:var(--tx2)}
+.alt{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
+.step{border-top:1px solid var(--line);padding-top:22px}.step .num{color:var(--ac);font:italic 1.5rem var(--serif)}.step h3{font-size:1.3rem;margin:15px 0 10px}.step p{font-size:.9rem;color:var(--tx2)}
+.projects{margin-top:58px;border-top:1px solid var(--line)}
+.project{display:grid;grid-template-columns:60px 1fr 1fr;gap:36px;align-items:center;padding:42px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.project:nth-child(even){grid-template-columns:60px 1fr 1fr}
+.project-index{font:italic 1.1rem var(--serif);color:var(--tx3);align-self:start}
+.project-type{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);font-weight:700}
+.project h3{font-size:clamp(1.8rem,3vw,2.6rem);margin:12px 0}.project p{color:var(--tx2);max-width:480px;font-size:.94rem}
+.project-link{display:inline-block;margin-top:20px;border-bottom:1px solid var(--ac);padding-bottom:3px;font-size:.83rem;font-weight:600}
+.project-art{min-height:190px;border:1px solid var(--line);background:linear-gradient(135deg,#1d211d,#10120f);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;position:relative;overflow:hidden}
+.project-art:before{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(109,242,176,.17);border-radius:50%}
+.project-art span{z-index:1;font:400 1.7rem var(--serif);letter-spacing:-.03em}
+.project-art small{display:block;font:600 .62rem var(--sans);letter-spacing:.18em;color:var(--ac);margin-top:8px}
+.project.no-link{cursor:default}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.trust-list{list-style:none}.trust-list li{padding:22px 0;border-top:1px solid var(--line);color:var(--tx2)}.trust-list strong{display:block;color:var(--tx);font:400 1.35rem var(--serif);margin-bottom:5px}
+.faq{max-width:820px;margin-top:48px}details{padding:22px 0;border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none;font:400 1.25rem var(--serif);display:flex;justify-content:space-between;gap:20px}summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--ac)}details[open] summary:after{content:"−"}details p{color:var(--tx2);margin-top:14px;max-width:680px}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+form{display:grid;gap:18px}label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tx3);font-weight:700}
+input,textarea,select{width:100%;margin-top:7px;padding:13px 0;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;color:var(--tx);outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--ac)}textarea{min-height:120px;resize:vertical}select option{background:#151515;color:white}
+.form-status{min-height:24px;color:var(--tx2);font-size:.88rem}.hp{position:absolute;left:-5000px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--tx3);font-size:.82rem}
+.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media(max-width:850px){.nav-links{display:none}.hero{padding:75px 0}.hero-grid,.trust-grid,.contact-grid{grid-template-columns:1fr;gap:42px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}section{padding:78px 0}.project,.project:nth-child(even){grid-template-columns:42px 1fr;gap:18px}.project-art{grid-column:2;grid-row:2;min-height:150px}.project-copy{grid-column:2}}
+@media(max-width:520px){.wrap{width:min(100% - 34px,1160px)}.nav-inner{height:66px}.nav-inner>.btn{padding:10px 13px;font-size:.76rem}.steps{grid-template-columns:1fr}.hero h1{font-size:clamp(2.8rem,14vw,4.2rem)}.visual-panel{min-height:280px}.footer-inner{display:block}.footer-inner span{display:block;margin:5px 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<nav><div class="wrap nav-inner"><a class="brand" href="index.html">Founder<span> Journey</span></a>
+<ul class="nav-links"><li><a href="#servicios">Servicios</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#faq">FAQ</a></li></ul>
+<a class="btn primary" href="#contacto">Hablemos</a></div></nav>
+<main id="main">
+<header class="hero"><div class="wrap hero-grid">
+<div><p class="eyebrow">Webs · Sistemas · Automatización con IA</p><h1>Soluciones digitales que <em>trabajan</em> por tu negocio.</h1>
+<p class="lead">Diseño y desarrollo sitios web, herramientas de gestión y automatizaciones para pymes y emprendedores: más claridad para tus clientes, menos tareas manuales para tu equipo.</p>
+<div class="actions"><a class="btn primary" href="#contacto">Cuéntame tu proyecto</a><a class="btn outline" href="#proyectos">Ver proyectos reales</a></div>
+<p class="hero-note">Alcance, entregables y plazos claros antes de empezar.</p></div>
+<div class="visual-panel"><div class="visual-mark"><strong>BUILD WITH PURPOSE</strong><span>WEB · SOFTWARE · AI</span></div></div>
+</div></header>
+<section id="problema"><div class="wrap"><div class="section-intro"><p class="label">El problema</p><h2>Tu negocio no debería depender de que hagas todo a mano.</h2></div>
+<div class="cards">
+<article class="card"><span class="num">01</span><h3>Una web que no convierte</h3><p>Una presencia digital confusa hace que el visitante no entienda qué ofreces ni cómo dar el siguiente paso.</p></article>
+<article class="card"><span class="num">02</span><h3>Procesos dispersos</h3><p>Reservas, pedidos y cobros repartidos entre hojas de cálculo y conversaciones generan trabajo y errores.</p></article>
+<article class="card"><span class="num">03</span><h3>Tareas repetitivas</h3><p>Los procesos manuales consumen tiempo que podrías dedicar a atender clientes y hacer crecer el negocio.</p></article>
+</div></div></section>
+<section id="servicios" class="alt"><div class="wrap"><div class="section-intro"><p class="label">Servicios</p><h2>Tecnología pensada para resolver problemas concretos.</h2><p>El alcance se define según el objetivo, el contexto y los recursos de cada negocio.</p></div>
+<div class="cards">
+<article class="card"><span class="num">01</span><h3>Web que capta clientes</h3><p>Sitios web y landing pages rápidos, claros y diseñados para convertir visitas en consultas o reservas.</p></article>
+<article class="card"><span class="num">02</span><h3>Sistemas a medida</h3><p>Aplicaciones web, paneles y herramientas para gestionar reservas, check-in, pedidos, operaciones y reportes.</p></article>
+<article class="card"><span class="num">03</span><h3>Automatización e IA</h3><p>Integraciones, flujos de trabajo y asistentes que ayudan a reducir tareas repetitivas y ordenar información.</p></article>
+</div></div></section>
+<section id="proyectos"><div class="wrap">
+<div class="section-intro"><p class="label">Proyectos seleccionados</p><h2>Productos y sitios que he diseñado y construido.</h2><p>Proyectos publicados para que puedas abrirlos y evaluar el resultado. Las vistas gráficas son identificadores de cada proyecto, no capturas de pantalla.</p></div>
+<div class="projects">
+<a class="project" href="https://hostelos.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="project-index">01</span><div class="project-copy"><span class="project-type">Sistema de gestión · Hostales</span><h3>HostelOS</h3><p>Sistema para gestionar reservas, check-in y caja de un hostal, sin Excel ni procesos manuales.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>HostelOS</span><small>HOSTEL MANAGEMENT</small></div></div></a>
+<a class="project" href="https://digitalizaweb.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="project-index">02</span><div class="project-copy"><span class="project-type">Plataforma · Restaurantes</span><h3>DigitalizaWeb</h3><p>Reemplaza el Linktree y el menú en PDF por una presencia profesional con reservas y pedidos.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>DigitalizaWeb</span><small>RESTAURANT DIGITAL</small></div></div></a>
+<div class="project no-link"><span class="project-index">03</span><div class="project-copy"><span class="project-type">Producto digital · Educación</span><h3>Manual de IA de Bolsillo</h3><p>Libro práctico en español para usar inteligencia artificial en la vida diaria y el trabajo, con su propia página de venta.</p><span class="small">Página de venta: enlace pendiente</span></div><div class="project-art"><div><span>Manual de IA</span><small>APRENDER · APLICAR</small></div></div></div>
+<a class="project" href="https://mikcaochocolatesycafe.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">04</span><div class="project-copy"><span class="project-type">Website · Cafetería</span><h3>Mi K'cao Chocolates y Café</h3><p>Sitio web para una chocolatería y cafetería de Arequipa: carta, ambiente e información para llegar al local.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Mi K'cao</span><small>CHOCOLATES Y CAFÉ</small></div></div></a>
+<div class="project no-link"><span class="project-index">05</span><div class="project-copy"><span class="project-type">Website · Hostal</span><h3>Hostel Viajeros Arequipa</h3><p>Website para presentar alojamientos, tours y experiencias en Arequipa y facilitar las reservas directas.</p><span class="small">Enlace público: pendiente</span></div><div class="project-art"><div><span>Viajeros Arequipa</span><small>HOSTEL · EXPERIENCES</small></div></div></div>
+<a class="project" href="https://uchucooking.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">06</span><div class="project-copy"><span class="project-type">Website · Clases de cocina</span><h3>Uchu Cooking</h3><p>Sitio web para clases de cocina peruana en una azotea: presenta experiencias, horarios y reservas.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Uchu Cooking</span><small>PERUVIAN COOKING</small></div></div></a>
+<a class="project" href="https://cabanacondebackpackers.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">07</span><div class="project-copy"><span class="project-type">Website · Hostelería y turismo</span><h3>Cabanaconde Backpackers</h3><p>Presencia web para un alojamiento en el entorno del Colca.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Cabanaconde</span><small>BACKPACKERS</small></div></div></a>
+<a class="project" href="https://colcaaventuras.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">08</span><div class="project-copy"><span class="project-type">Website · Turismo</span><h3>Colca Aventuras</h3><p>Website para presentar experiencias y actividades turísticas en el Valle del Colca.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Colca Aventuras</span><small>EXPLORE THE ANDES</small></div></div></a>
+<a class="project" href="https://tourlagunadesalinas.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">09</span><div class="project-copy"><span class="project-type">Website · Turismo</span><h3>Tour Laguna de Salinas</h3><p>Website para presentar una experiencia turística en la Reserva Nacional de Salinas y Aguada Blanca.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Laguna de Salinas</span><small>TOUR EXPERIENCE</small></div></div></a>
+<a class="project" href="https://lonkohostels.com/" target="_blank" rel="noopener noreferrer"><span class="project-index">10</span><div class="project-copy"><span class="project-type">Website · Hostelería</span><h3>Lonko Hostels</h3><p>Presencia digital para un alojamiento y sus experiencias para viajeros en Arequipa.</p><span class="project-link">Visitar el sitio ↗</span></div><div class="project-art"><div><span>Lonko</span><small>HOSTELS · AREQUIPA</small></div></div></a>
+</div></div></section>
+<section id="proceso" class="alt"><div class="wrap"><div class="section-intro"><p class="label">Proceso</p><h2>De la necesidad a una solución funcionando.</h2></div>
+<div class="steps"><article class="step"><span class="num">01</span><h3>Conversamos</h3><p>Entiendo tu negocio, el problema y el resultado que necesitas.</p></article><article class="step"><span class="num">02</span><h3>Propuesta clara</h3><p>Definimos alcance, entregables, inversión y plazos antes de empezar.</p></article><article class="step"><span class="num">03</span><h3>Construcción</h3><p>Revisas avances y pruebas el producto durante el desarrollo.</p></article><article class="step"><span class="num">04</span><h3>Lanzamiento</h3><p>Publicación, ajustes y explicación para que puedas utilizarlo.</p></article></div></div></section>
+<section><div class="wrap trust-grid"><div><p class="label">Forma de trabajar</p><h2>Una sola persona de principio a fin.</h2></div><ul class="trust-list"><li><strong>Estrategia y código juntos</strong>El contexto del negocio guía las decisiones técnicas.</li><li><strong>Trabajo verificable</strong>Los proyectos publicados permiten revisar ejemplos reales.</li><li><strong>Alcance transparente</strong>La propuesta define qué incluye el trabajo y qué queda fuera.</li></ul></div></section>
+<section id="faq" class="alt"><div class="wrap"><div class="section-intro"><p class="label">Preguntas frecuentes</p><h2>Antes de empezar.</h2></div><div class="faq">
+<details><summary>¿Cuánto cuesta un proyecto?</summary><p>Depende del alcance y la complejidad. Después de conocer la necesidad, preparo una propuesta con inversión y entregables definidos.</p></details>
+<details><summary>¿Cuánto tarda?</summary><p>El plazo depende del tipo de solución. Se acuerda por escrito antes de iniciar.</p></details>
+<details><summary>¿Necesito conocimientos técnicos?</summary><p>No. La solución y su funcionamiento se explican en lenguaje claro.</p></details>
+<details><summary>¿Hay soporte después del lanzamiento?</summary><p>Podemos acordar mantenimiento, mejoras o acompañamiento según las necesidades del proyecto.</p></details>
+</div></div></section>
+<section id="contacto"><div class="wrap contact-grid"><div><p class="label">Contacto</p><h2>Cuéntame qué necesitas construir.</h2><p class="lead">Describe brevemente tu proyecto. Recibirás una respuesta por correo con el siguiente paso.</p><p class="small">No incluyas contraseñas ni información confidencial en este formulario.</p></div>
+<form class="contact-form" data-area="desarrollo">
+<div><label for="dev-name">Nombre</label><input id="dev-name" name="name" autocomplete="name" required maxlength="100"></div>
+<div><label for="dev-email">Correo electrónico</label><input id="dev-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+<div><label for="dev-company">Empresa o negocio (opcional)</label><input id="dev-company" name="company" maxlength="120"></div>
+<div><label for="dev-message">¿Qué quieres lograr?</label><textarea id="dev-message" name="message" required minlength="10" maxlength="4000" placeholder="Ej.: necesito un sitio web para recibir reservas..."></textarea></div>
+<div class="hp" aria-hidden="true"><label>Dejar vacío<input name="website" tabindex="-1" autocomplete="off"></label></div>
+<button class="btn primary" type="submit">Enviar consulta ↗</button><p class="form-status" role="status" aria-live="polite"></p>
+</form></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span class="year"></span> Founder Journey</span><span><a href="index.html">Inicio</a> · <a href="ciberseguridad.html">QGShield</a></span></div></footer>
+<script>
+document.querySelectorAll('.year').forEach(e=>e.textContent=new Date().getFullYear());
+document.querySelectorAll('.contact-form').forEach(form=>form.addEventListener('submit',async e=>{
+ e.preventDefault();const status=form.querySelector('.form-status'),button=form.querySelector('button');
+ if(!form.reportValidity())return;button.disabled=true;button.textContent='Enviando…';status.textContent='Enviando tu consulta…';
+ const data=Object.fromEntries(new FormData(form).entries());data.area=form.dataset.area;
+ try{const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const j=await r.json();if(!r.ok)throw new Error(j.error||'No se pudo enviar.');status.textContent='Mensaje enviado. Gracias; te responderé por correo.';form.reset();}
+ catch(err){status.textContent=err.message||'Hubo un error. Inténtalo de nuevo más tarde.';}
+ finally{button.disabled=false;button.textContent='Enviar consulta ↗';}
+}));
+</script>
+</body></html>
