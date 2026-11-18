@@ -1,97 +1,106 @@
+# Founder Journey
+### Cybersecurity · Privacy Engineering · System Hardening · Private AI
+
 <div align="center">
 
-# Founder Journey
-
-### Building AI, software and digital ecosystems that create real-world impact.
+**Building secure, private and autonomous digital environments.**
 
 [Website](https://1founder.vercel.app) • [LinkedIn](#) • [Portfolio](https://1founder.vercel.app/#proyectos)
 
 ---
 
-*"Technology is not the destination. It is the tool that gives people freedom."*
+*"Technology should empower people, not compromise their freedom."*
 
 </div>
 
 ## About
 
-I'm a Software Engineer passionate about building products where technology, design and business meet.
+I'm a Software Engineer focused on Cybersecurity, Privacy Engineering and secure technology systems.
 
-I work across the entire product lifecycle—from idea and strategy to development, automation, launch and growth.
+My interests and technical focus include system hardening, attack surface reduction, digital privacy, anonymous communications, defensive security and private computing environments.
 
-Today my main focus is Artificial Intelligence, SaaS and helping businesses become digitally exceptional.
+I believe security should be built into the architecture, not added as an afterthought.
 
----
+Alongside cybersecurity, I have hands-on software development experience, allowing me to understand, build, analyze and secure applications across the entire technology stack.
 
-## What I Build
+I'm particularly interested in local AI, self-hosted infrastructure and autonomous systems that operate independently of cloud services and unnecessary external dependencies.
 
-- 🤖 AI Applications
-- 🌐 Modern Websites
-- 🚀 SaaS Products
-- ⚡ Business Automations
-- 🎨 UX/UI Systems
-- 🔒 Secure Software
+My goal is to build technology that strengthens digital sovereignty, privacy and individual freedom.
 
 ---
 
-## Tech Stack
+## Core Focus
 
-**Frontend**
+- **Cybersecurity & Ethical Hacking** — Security research, threat analysis and defensive security.
+- **System Hardening** — Operating system security, attack surface reduction and secure configurations.
+- **Privacy Engineering** — Data protection, privacy-preserving architectures and digital footprint reduction.
+- **Anonymous Communications** — Network privacy, secure protocols and metadata protection.
+- **Private AI & Local LLMs** — Locally hosted models, offline AI environments and private AI infrastructure.
+- **Secure Software Engineering** — Application security, secure architecture and software development.
+- **Automation & Autonomous Systems** — AI agents, local workflows and independent execution environments.
 
-React • Next.js • TypeScript • Tailwind CSS
+---
 
-**Backend**
+## Technical Skills
 
-Node.js • PostgreSQL • Supabase • REST APIs
+**Software Engineering**
 
-**AI**
+React • Next.js • TypeScript • JavaScript • Node.js • PostgreSQL • Supabase • REST APIs • HTML • CSS
 
-OpenAI • Claude • Gemini • DeepSeek • RAG • AI Agents
+**AI & Machine Learning**
+
+AI Engineering • LLMs • RAG • AI Agents • Local AI • Private AI Infrastructure
+
+**Security & Privacy**
+
+System Hardening • Blue Team • Endpoint Security • Network Security • Application Security • Digital Privacy • Threat Analysis • Secure Communications
+
+**Infrastructure & Tools**
+
+Linux • Docker • Git • GitHub • Vercel • VS Code • REST APIs
 
 **Automation**
 
-Make • Notion • Google Workspace • Webhooks
-
-**Tools**
-
-Git • GitHub • Docker • Vercel • VS Code
+Make • Webhooks • Notion • Google Workspace
 
 ---
 
-## Current Projects
+## Areas of Exploration
 
-- Founder Journey
-- DigitalizaWeb
-- Hostelos
-- El Jardinero
-- Pocket AI Manual
-
----
-
-## Principles
-
-> Build things that matter.
-
-> Simplicity is a competitive advantage.
-
-> Beautiful products create trust.
-
-> Learn continuously.
-
-> Share knowledge.
+- Operating System Security & Hardening
+- Privacy-Focused Operating Systems
+- Anonymous Network Architectures
+- Secure and Encrypted Communications
+- Digital Identity & Metadata Protection
+- Local LLM Deployment
+- Offline AI & Autonomous Agents
+- Private Infrastructure & Self-Hosted Systems
+- Malware Analysis & Defensive Security
 
 ---
 
-## Currently Learning
+## Technology Philosophy
 
-- AI Engineering
-- Agentic Workflows
-- Product Design
-- Startup Systems
+> Privacy is a fundamental component of digital freedom.
+
+> Security is an architectural decision, not a feature.
+
+> Knowledge should be accessible, not restricted.
+
+> Build systems that give people control over their technology.
 
 ---
+
+## Founder Journey
+
+Founder Journey is my personal technology initiative focused on building systems, exploring emerging technologies and creating practical solutions that expand human freedom.
+
+I combine software engineering, cybersecurity, artificial intelligence and entrepreneurial thinking to explore what technology can make possible.
+
+**Build securely. Think independently. Create freely.**
 
 <div align="center">
 
-**Always building. Always learning.**
+**Always exploring. Always building.**
 
 </div>
